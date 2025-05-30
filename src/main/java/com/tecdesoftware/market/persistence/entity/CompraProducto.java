@@ -7,14 +7,12 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name ="compras_productos")
 public class CompraProducto {
-
     @EmbeddedId
     private CompraProductoPK id;
 
     private Integer cantidad;
     private Double total;
     private Boolean estado;
-
     public CompraProductoPK getId() {
         return id;
     }
