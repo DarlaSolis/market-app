@@ -10,7 +10,7 @@ public class Producto {
     //Autogenera ID autoincrementables
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column(name="id_producto")
-    private int idProducto;
+    private Integer idProducto;
 
     //Si se llama la tabla de la BD y la de aqui son iguales, no se necesita poner el @Column(name=" ")
     private String nombre;
@@ -29,11 +29,16 @@ public class Producto {
 
     private Boolean estado;
 
-    public int getIdProducto() {
+    //Agregamos las relaciones
+    @ManyToOne
+    @JoinColumn(name="id_categoria", insertable=false, updatable=false)
+    private Categoria categorias;
+
+    public Integer getIdProducto() {
         return idProducto;
     }
 
-    public void setIdProducto(int idProducto) {
+    public void setIdProducto(Integer idProducto) {
         this.idProducto = idProducto;
     }
 

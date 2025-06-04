@@ -2,6 +2,7 @@ package com.tecdesoftware.market.persistence.entity;
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table (name="compras")
@@ -11,7 +12,7 @@ public class Compra{
     @GeneratedValue(strategy= GenerationType.IDENTITY)
 
     @Column(name = "id_compra")
-    private int idCompra;
+    private Integer idCompra;
 
     @Column(name = "id_cliente")
     private Integer idCliente;
@@ -20,16 +21,23 @@ public class Compra{
 
     @Column(name = "medio_pago")
     private String medioPago;
-
     private String comentario;
-
     private String estado;
 
-    public int getIdCompra() {
+    @ManyToOne
+    //Insertable/Updatable en false es para que no haya modificación
+    @JoinColumn(name = "id_cliente", insertable = false, updatable = false)
+    private Cliente cliente;
+
+    //Una compra tiene muchos productos
+    @OneToMany(mappedBy = "compra")
+    private List<CompraProducto>  productos;
+
+    public Integer getIdCompra() {
         return idCompra;
     }
 
-    public void setIdCompra(int idCompra) {
+    public void setIdCompra(Integer idCompra) {
         this.idCompra = idCompra;
     }
 
