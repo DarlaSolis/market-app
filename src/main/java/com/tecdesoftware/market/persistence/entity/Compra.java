@@ -1,18 +1,18 @@
 package com.tecdesoftware.market.persistence.entity;
 
 import jakarta.persistence.*;
+
 import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
-@Table (name="compras")
-public class Compra{
-
-    @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
-
+@Table(name="compras")
+public class Compra {
+    @Id //LLave primaria
+    //Autogenera Ids autoincrementables
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_compra")
-    private Integer idCompra;
+    private int idCompra;
 
     @Column(name = "id_cliente")
     private Integer idCliente;
@@ -21,23 +21,25 @@ public class Compra{
 
     @Column(name = "medio_pago")
     private String medioPago;
-    private String comentario;
-    private String estado;
 
+    private String comentario;
+
+    private Boolean estado;
+
+    //Relación con Cliente: Muchas compras para un cliente
     @ManyToOne
-    //Insertable/Updatable en false es para que no haya modificación
+    //Intertable//Updatable en false es para que no haya modificaciones
     @JoinColumn(name = "id_cliente", insertable = false, updatable = false)
     private Cliente cliente;
 
-    //Una compra tiene muchos productos
     @OneToMany(mappedBy = "compra")
-    private List<CompraProducto>  productos;
+    private List<CompraProducto> productos;
 
-    public Integer getIdCompra() {
+    public int getIdCompra() {
         return idCompra;
     }
 
-    public void setIdCompra(Integer idCompra) {
+    public void setIdCompra(int idCompra) {
         this.idCompra = idCompra;
     }
 
@@ -73,11 +75,13 @@ public class Compra{
         this.comentario = comentario;
     }
 
-    public String getEstado() {
+    public Boolean getEstado() {
         return estado;
     }
 
-    public void setEstado(String estado) {
+    public void setEstado(Boolean estado) {
         this.estado = estado;
     }
 }
+
+

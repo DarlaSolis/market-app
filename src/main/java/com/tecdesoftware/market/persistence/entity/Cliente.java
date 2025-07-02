@@ -7,24 +7,18 @@ import java.util.List;
 @Entity
 @Table(name="clientes")
 public class Cliente {
-
     @Id
-    //Porque el ID será la CURP no usaremos el @GenaratedValue
+    //Porque el ID será la CURP @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
     private String nombre;
-
-    private String apellidos;
-
-    private Long celular;
-
+    private String apellido;
+    private Long celular; //Se almacena como número grande 9992896754
     private String direccion;
 
-    @Column(name = "correo_electronico")
+    @Column (name="correo_electronico")
     private String correoElectronico;
 
-    //Las relaciones
-    @OneToMany(mappedBy = "cliente")
+    @OneToMany (mappedBy="cliente")
     private List<Compra> compras;
 
 
@@ -44,12 +38,12 @@ public class Cliente {
         this.nombre = nombre;
     }
 
-    public String getApellidos() {
-        return apellidos;
+    public String getApellido() {
+        return apellido;
     }
 
-    public void setApellidos(String apellidos) {
-        this.apellidos = apellidos;
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
     }
 
     public Long getCelular() {

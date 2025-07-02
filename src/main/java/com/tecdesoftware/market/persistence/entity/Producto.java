@@ -4,41 +4,41 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name="productos")
-public class Producto {
+public class Producto
 
-    @Id //Es la llave primaria
-    //Autogenera ID autoincrementables
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+{
+    @Id //LLave primaria
+    //Autogenera Ids autoincrementables
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id_producto")
-    private Integer idProducto;
+    private int idProducto;
 
-    //Si se llama la tabla de la BD y la de aqui son iguales, no se necesita poner el @Column(name=" ")
     private String nombre;
 
-    @Column(name = "id_categoria")
+    @Column(name="id_categoria")
     private Integer idCategoria;
 
-    @Column(name = "codigo_barras")
+    @Column(name="codigo_barras")
     private String codigoBarras;
 
     @Column(name="precio_venta")
     private Double precioVenta;
 
-    @Column(name = "cantidad_stock")
+    @Column(name="cantidad_stock")
     private Integer cantidadStock;
 
     private Boolean estado;
 
-    //Agregamos las relaciones
     @ManyToOne
-    @JoinColumn(name="id_categoria", insertable=false, updatable=false)
-    private Categoria categorias;
+    @JoinColumn(name = "id_categoria",insertable = false,updatable = false)
+    private Categoria categoria;
 
-    public Integer getIdProducto() {
+
+    public int getIdProducto() {
         return idProducto;
     }
 
-    public void setIdProducto(Integer idProducto) {
+    public void setIdProducto(int idProducto) {
         this.idProducto = idProducto;
     }
 
@@ -88,5 +88,13 @@ public class Producto {
 
     public void setEstado(Boolean estado) {
         this.estado = estado;
+    }
+
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
     }
 }
