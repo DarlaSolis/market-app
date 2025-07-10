@@ -30,7 +30,7 @@ public class ProductService {
         return productRepository.save(product);
     }
 
-    public boolean deleteProduct(int productId) {
+    public boolean delete(int productId) {
         //Verificar que existe el producto que se desee eliminar
         if (getProduct(productId).isPresent()) {
             productRepository.delete(productId);

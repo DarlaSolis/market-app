@@ -14,7 +14,6 @@ import java.util.Optional;
 //Esta anotación le dice a Spring que este archivo se enlaza con la BD
 @Repository
 public class ProductoRepository implements ProductRepository {
-
     //Auto inyectado: Spring se encarga de crear la instancia
     @Autowired
     private ProductoCrudRepository productoCrudRepository;

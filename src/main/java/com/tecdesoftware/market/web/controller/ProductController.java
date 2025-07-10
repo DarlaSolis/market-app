@@ -1,43 +1,58 @@
 package com.tecdesoftware.market.web.controller;
+
 import com.tecdesoftware.market.domain.Product;
 import com.tecdesoftware.market.domain.service.ProductService;
 import com.tecdesoftware.market.persistence.ProductoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
 
-//Le dice a Spring que va a ser el controlador de una API REST
+//Le dice a Spring que va
 @RestController
 @RequestMapping("/products")
 public class ProductController {
-    //Inyectar el servicio
+
     @Autowired
     private ProductService productService;
+
     @Autowired
     private ProductoRepository productoRepository;
 
-    @GetMapping("/all")
-    public List<Product> getAll() {
-        return productService.getAll();
+    @GetMapping("/")
+    public ResponseEntity<List<Product>> getAll() {
+        return new ResponseEntity<>(productService.getAll(), HttpStatus.OK) ;
     }
 
-    public Optional<Product> getProduct(int productId) {
-        return productService.getProduct(productId);
+    // Añadido para filtrarlo por los ID's
+    @GetMapping("/{id}")
+    public ResponseEntity<Product> getProduct(@PathVariable ("id") int productId) {
+        return productService.getProduct(productId)
+                .map(product -> new ResponseEntity<>(product, HttpStatus.OK))
+                .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
-    public Optional<List<Product>> getByCategory(int categoryId) {
-        return productService.getByCategory(categoryId);
+    @GetMapping("/category/{categoryId}")
+    public ResponseEntity<List<Product>> getByCategory(@PathVariable ("categoryId") int categoryId) {
+        return productService.getByCategory(categoryId)
+                .map(products -> new ResponseEntity<>(products, HttpStatus.OK))
+                .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
-    public Product save(Product product) {
-        return productService.save(product);
+    @PostMapping ("")
+    public ResponseEntity<Product> save(@RequestBody Product product) {
+        return new ResponseEntity<>(productService.save(product), HttpStatus.CREATED);
     }
 
-    public boolean delete(int productId) {
-        return productService.deleteProduct(productId);
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Product> delete(@PathVariable ("id") int productId) {
+        if (productService.delete(productId)) {
+            return new ResponseEntity<>(HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
 }

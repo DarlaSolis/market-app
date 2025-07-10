@@ -1,6 +1,6 @@
 package com.tecdesoftware.market.domain.repository;
 
-import com.tecdesoftware.market.domain.Product;;
+import com.tecdesoftware.market.domain.Product;
 import java.util.List;
 import java.util.Optional;
 
