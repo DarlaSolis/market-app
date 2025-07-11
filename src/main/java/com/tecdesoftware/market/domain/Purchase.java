@@ -3,6 +3,7 @@ package com.tecdesoftware.market.domain;
 import java.time.LocalDate;
 import java.util.List;
 
+
 public class Purchase {
     private String clientId;
     private LocalDate purchaseDate;
@@ -10,17 +11,17 @@ public class Purchase {
     private String comment;
     //Estado del producto(disponible, etc)
     private String state;
-    private List<PurchaseItem> item;
+    private List<PurchaseItem> items;
 
 
     private int purchaseId;
 
     public List<PurchaseItem> getItem() {
-        return item;
+        return items;
     }
 
-    public void setItem(List<PurchaseItem> item) {
-        this.item = item;
+    public void setItem(List<PurchaseItem> items) {
+        this.items = items;
     }
 
     public String getState() {
