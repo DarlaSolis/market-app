@@ -16,15 +16,12 @@ public class Compra {
 
     @Column(name = "id_cliente")
     private String idCliente;
-
     private LocalDateTime fecha;
 
     @Column(name = "medio_pago")
     private String medioPago;
-
     private String comentario;
-
-    private Boolean estado;
+    private String estado;
 
     //Relación con Cliente: Muchas compras para un cliente
     @ManyToOne
@@ -75,11 +72,11 @@ public class Compra {
         this.comentario = comentario;
     }
 
-    public Boolean getEstado() {
+    public String getEstado() {
         return estado;
     }
 
-    public void setEstado(Boolean estado) {
+    public void setEstado(String estado) {
         this.estado = estado;
     }
 

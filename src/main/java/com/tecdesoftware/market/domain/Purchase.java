@@ -12,40 +12,14 @@ public class Purchase {
     //Estado del producto(disponible, etc)
     private String state;
     private List<PurchaseItem> items;
-
-
     private int purchaseId;
 
-    public List<PurchaseItem> getItem() {
-        return items;
+    public String getClientId() {
+        return clientId;
     }
 
-    public void setItem(List<PurchaseItem> items) {
-        this.items = items;
-    }
-
-    public String getState() {
-        return state;
-    }
-
-    public void setState(String state) {
-        this.state = state;
-    }
-
-    public String getComment() {
-        return comment;
-    }
-
-    public void setComment(String comment) {
-        this.comment = comment;
-    }
-
-    public String getPaymentMethod() {
-        return paymentMethod;
-    }
-
-    public void setPaymentMethod(String paymentMethod) {
-        this.paymentMethod = paymentMethod;
+    public void setClientId(String clientId) {
+        this.clientId = clientId;
     }
 
     public LocalDate getPurchaseDate() {
@@ -56,12 +30,36 @@ public class Purchase {
         this.purchaseDate = purchaseDate;
     }
 
-    public String getClientId() {
-        return clientId;
+    public String getPaymentMethod() {
+        return paymentMethod;
     }
 
-    public void setClientId(String clientId) {
-        this.clientId = clientId;
+    public void setPaymentMethod(String paymentMethod) {
+        this.paymentMethod = paymentMethod;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public List<PurchaseItem> getItems() {
+        return items;
+    }
+
+    public void setItems(List<PurchaseItem> items) {
+        this.items = items;
     }
 
     public int getPurchaseId() {
@@ -71,5 +69,4 @@ public class Purchase {
     public void setPurchaseId(int purchaseId) {
         this.purchaseId = purchaseId;
     }
-
 }

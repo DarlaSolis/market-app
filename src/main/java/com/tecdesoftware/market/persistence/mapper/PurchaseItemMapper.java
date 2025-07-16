@@ -15,7 +15,7 @@ public interface PurchaseItemMapper {
             @Mapping(source = "id.idProducto", target ="productId"),
             @Mapping(source = "cantidad", target ="quantity"),
             //Mapping(source = "total", target ="total"), no es necesario ya que tienen el mismo nombre
-            @Mapping(source = "active", target ="estado"),
+            @Mapping(source = "estado", target ="active"),
     })
     PurchaseItem toPurchaseItem(CompraProducto producto);
 

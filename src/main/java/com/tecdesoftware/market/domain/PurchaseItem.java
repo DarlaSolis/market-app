@@ -5,7 +5,7 @@ public class PurchaseItem {
     private int quantity;
     private double total;
     //Producto disponible pero no activo/desactivo para comprar (preventas) (es el stock)
-    private boolean active;
+    private String active;
 
     public int getProductId() {
         return productId;
@@ -31,11 +31,11 @@ public class PurchaseItem {
         this.total = total;
     }
 
-    public boolean isActive() {
+    public String getActive() {
         return active;
     }
 
-    public void setActive(boolean active) {
+    public void setActive(String active) {
         this.active = active;
     }
 }
