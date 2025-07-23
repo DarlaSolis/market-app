@@ -1,6 +1,7 @@
-package com.tecdesoftware.market.domain.service;
+package com.tecdesoftware.market.web.controller;
 
 import com.tecdesoftware.market.domain.Purchase;
+import com.tecdesoftware.market.domain.service.PurchaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

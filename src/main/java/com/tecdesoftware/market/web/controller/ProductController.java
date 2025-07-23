@@ -17,7 +17,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
+
+//Se añade para dar el acceso al frontend
+@CrossOrigin(origins = "*" )
 
 //Le dice a Spring que va
 @RestController

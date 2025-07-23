@@ -15,7 +15,7 @@ public class Producto
 
     private String nombre;
 
-    @Column(name="id_categoria", insertable = false, updatable = false)
+    @Column(name="id_categoria")
     private Integer idCategoria;
 
     @Column(name="codigo_barras")
@@ -30,7 +30,7 @@ public class Producto
     private Boolean estado;
 
     @ManyToOne
-    @JoinColumn(name = "id_categoria")
+    @JoinColumn(name="id_categoria", insertable=false, updatable=false)
     private Categoria categoria;
 
     public int getIdProducto() {
